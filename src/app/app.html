@@ -1,4 +1,4 @@
- <app-header></app-header>
+ <!--<app-header></app-header>
 
 <app-navbar></app-navbar>
 
@@ -6,4 +6,35 @@
 
 <app-product-details></app-product-details>
 
-<app-footer></app-footer>
+<app-footer></app-footer> -->
+
+
+<h1>ElectroShop</h1>
+
+<div class="buttons">
+
+  <button (click)="showFirstProduct()">
+    Laptop
+  </button>
+
+  <button (click)="showSecondProduct()">
+    Wireless Headphones
+  </button>
+
+</div>
+
+<hr>
+
+<app-product-details
+  [productName]="productName()"
+  [productDescription]="productDescription()"
+  [productPrice]="productPrice()"
+  [productAvailability]="productAvailability()"
+  (addToCart)="addToCart($event)">
+</app-product-details>
+
+<hr>
+
+<app-shopping-cart
+  [cart]="cart()">
+</app-shopping-cart>

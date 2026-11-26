@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,  Input, Output, EventEmitter, signal } from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
@@ -8,17 +8,11 @@ import { Component } from '@angular/core';
 })
 export class ProductDetails {
 
-
-
-  productImage: string = 'https://via.placeholder.com/200';
-
-  productName: string = 'Samsung Galaxy';
-  productDescription: string = 'A powerful Samsung smartphone';
-  productPrice: number = 500;
+ /* productName: string = 'Laptop';
+  productDescription: string = 'Dell Laptop, Core i7, 16GB RAM';
+  productPrice: number = 850;
   discountPercentage: number = 10;
-
   isAvailable: boolean = true;
-
   quantity: number = 1;
 
   decreaseQuantity(): void {
@@ -34,6 +28,36 @@ export class ProductDetails {
   getFinalPrice(): number {
     return this.productPrice -
       (this.productPrice * this.discountPercentage / 100);
+  }*/
+
+  @Input() productName: string = '';
+  @Input() productDescription: string = '';
+  @Input() productPrice: number = 0;
+  @Input() productAvailability: boolean = false;
+
+  quantity = signal(1);
+
+  @Output() addToCart = new EventEmitter<{
+    productName: string;
+    productPrice: number;
+    quantity: number;
+  }>();
+
+  increaseQuantity() {
+    this.quantity.update(value => value + 1);
   }
+
+  decreaseQuantity() {
+    this.quantity.update(value => value > 1 ? value - 1 : 1);
+  }
+
+  addProduct() {
+    this.addToCart.emit({
+      productName: this.productName,
+      productPrice: this.productPrice,
+      quantity: this.quantity()
+    });
+  }
+
 
 }

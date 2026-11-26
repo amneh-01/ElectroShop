@@ -1,0 +1,12 @@
+.cart-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  background-color: #f8fafc;
+}
+
+.cart-card h2 {
+  color: #15803d;
+}

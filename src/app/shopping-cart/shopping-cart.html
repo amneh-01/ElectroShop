@@ -1,0 +1,27 @@
+
+<div class="cart-card">
+
+  <h2>SHOPPING CART</h2>
+
+  @if (cart) {
+
+    <p>Product: {{ cart.productName }}</p>
+
+    <p>Unit Price: ${{ cart.productPrice }}</p>
+
+    <p>Quantity: {{ cart.quantity }}</p>
+
+    <hr>
+
+    <h3>
+      Total Price:
+      ${{ cart.productPrice * cart.quantity }}
+    </h3>
+
+  } @else {
+
+    <p>Your shopping cart is empty.</p>
+
+  }
+
+</div>

@@ -1,4 +1,4 @@
-<h2>Product Details</h2>
+<!--<h2>Product Details</h2>
 
 <img [src]="productImage" width="200" height="200" />
 
@@ -16,3 +16,42 @@
 </p>
 
 <p>Total after discount: ${{getFinalPrice()}}</p>
+
+-->
+
+<div class="product-card">
+
+  <h2>PRODUCT DETAILS</h2>
+
+  <h3>{{ productName }}</h3>
+
+  <p>{{ productDescription }}</p>
+
+  <p>Price: ${{ productPrice }}</p>
+
+  <p>
+    Status:
+    {{ productAvailability ? 'Available' : 'Not Available' }}
+  </p>
+
+  <hr>
+
+  <h3>Quantity: {{ quantity() }}</h3>
+
+  <div class="quantity">
+    <button (click)="decreaseQuantity()">-</button>
+
+    <span>{{ quantity() }}</span>
+
+    <button (click)="increaseQuantity()">+</button>
+  </div>
+
+  <br>
+
+  <button
+    (click)="addProduct()"
+    [disabled]="!productAvailability">
+    Add to Cart
+  </button>
+
+</div>
