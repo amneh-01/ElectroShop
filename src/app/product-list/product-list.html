@@ -1,4 +1,4 @@
-<h2>Our Products</h2>
+<!--<h2>Our Products</h2>
 
 <div class="products">
 
@@ -41,5 +41,140 @@
     <p>${{products[4].price}}</p>
     <button [disabled]="!products[4].isAvailable" (click)="buyNow(products[4].name)">Buy Now</button>
   </div>
+
+</div> -->
+
+
+<!-- Task4 -->
+
+<h2 class="text-center m-4">Our Products</h2>
+
+<div class="d-flex flex-wrap justify-content-center gap-3">
+
+  @for(product of products; track product.id){
+
+    <div class="card" style="width: 18rem;"
+  [ngClass]="{
+    'discount-card': product.discount > 0,
+    'available-card': product.isAvailable,
+    'unavailable-card': !product.isAvailable,
+    'premium-card': product.price > 500
+  }"
+  [ngStyle]="{'opacity': product.isAvailable ? '1' : '0.5'}">
+
+      <img [src]="product.image"
+     style="width: 100%; height: 200px; object-fit: cover;">
+
+
+<div class="card-body">
+
+  <h5 class="card-title">{{product.name}}</h5>
+
+  <p>{{product.category}}</p>
+
+  <p [ngStyle]="{
+    'color': product.discount > 0 ? 'red' : 'black',
+    'font-size': product.price > 500 ? '24px' : '16px'
+  }">
+    {{product.price}} JD
+  </p>
+
+  @if(product.price > 500){
+    <span class="badge bg-primary">
+      Premium Product
+    </span>
+  }
+
+  <div class="product-badges">
+
+    <span class="badge"
+      [ngClass]="product.isAvailable ? 'bg-success' : 'bg-danger'">
+
+      @if(product.isAvailable){
+        Available
+      } @else {
+        Out of Stock
+      }
+
+    </span>
+
+    <span class="badge"
+      [ngClass]="product.discount > 0 ? 'bg-warning text-dark' : 'bg-secondary'">
+
+      @if(product.discount > 0){
+        Special Offer
+      } @else {
+        No Discount
+      }
+
+    </span>
+
+  </div>
+<br>
+  @if(product.isAvailable){
+    <button class="btn btn-primary mt-auto">
+      Buy Now
+    </button>
+  }
+
+</div>
+
+
+
+    </div>
+
+
+  }
+
+</div>
+<h2>Order Status</h2>
+
+<button class="btn btn-warning m-2" (click)="orderStatus = 'Pending'">Pending</button>
+<button class="btn btn-warning m-2" (click)="orderStatus = 'Processing'">Processing</button>
+<button class="btn btn-warning m-2" (click)="orderStatus = 'Shipped'">Shipped</button>
+<button class="btn btn-warning m-2" (click)="orderStatus = 'Delivered'">Delivered</button>
+
+@switch(orderStatus){
+
+  @case('Pending'){
+    <p>Your order is waiting for confirmation.</p>
+  }
+
+  @case('Processing'){
+    <p>Your order is being prepared.</p>
+  }
+
+  @case('Shipped'){
+    <p>Your order has been shipped.</p>
+  }
+
+  @case('Delivered'){
+    <p>Your order has been delivered.</p>
+  }
+
+  @default{
+    <p>Unknown Order Status.</p>
+  }
+
+}
+<div class="text-center m-4">
+
+  <h2>My Categories</h2>
+
+  <div class="d-flex justify-content-center gap-3">
+    <p>All Products</p>
+    <p>Electronics</p>
+    <p>Accessories</p>
+  </div>
+
+  @if(selectedCategory == 'All Products'){
+    <p>Showing all products</p>
+  }
+  @else if(selectedCategory == 'Accessories'){
+    <p>Showing Accessories</p>
+  }
+  @else if(selectedCategory == 'Electronics'){
+    <p>Showing Electronics</p>
+  }
 
 </div>

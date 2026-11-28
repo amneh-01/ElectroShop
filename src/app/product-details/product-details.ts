@@ -8,7 +8,7 @@ import { Component,  Input, Output, EventEmitter, signal } from '@angular/core';
 })
 export class ProductDetails {
 
- /* productName: string = 'Laptop';
+ /*productName: string = 'Laptop';
   productDescription: string = 'Dell Laptop, Core i7, 16GB RAM';
   productPrice: number = 850;
   discountPercentage: number = 10;
@@ -37,12 +37,6 @@ export class ProductDetails {
 
   quantity = signal(1);
 
-  @Output() addToCart = new EventEmitter<{
-    productName: string;
-    productPrice: number;
-    quantity: number;
-  }>();
-
   increaseQuantity() {
     this.quantity.update(value => value + 1);
   }
@@ -50,6 +44,12 @@ export class ProductDetails {
   decreaseQuantity() {
     this.quantity.update(value => value > 1 ? value - 1 : 1);
   }
+
+@Output() addToCart = new EventEmitter<{
+    productName: string;
+    productPrice: number;
+    quantity: number;
+  }>();
 
   addProduct() {
     this.addToCart.emit({

@@ -1,4 +1,4 @@
-body {
+/*body {
   font-family: Arial, sans-serif;
 }
 
@@ -24,4 +24,13 @@ button:hover {
 button:disabled {
   background-color: gray;
   cursor: not-allowed;
+}*/
+
+/* --- Task 4---*/
+
+/* Products Container */
+
+
+.card {
+  width: 18rem;
 }

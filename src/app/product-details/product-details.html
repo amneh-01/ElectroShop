@@ -15,20 +15,15 @@
   <button [disabled]="!isAvailable" (click)="increaseQuantity()">+</button>
 </p>
 
-<p>Total after discount: ${{getFinalPrice()}}</p>
+<p>Total after discount: ${{getFinalPrice()}}</p>-->
 
--->
+
 
 <div class="product-card">
-
   <h2>PRODUCT DETAILS</h2>
-
   <h3>{{ productName }}</h3>
-
   <p>{{ productDescription }}</p>
-
   <p>Price: ${{ productPrice }}</p>
-
   <p>
     Status:
     {{ productAvailability ? 'Available' : 'Not Available' }}
@@ -47,11 +42,7 @@
   </div>
 
   <br>
-
-  <button
-    (click)="addProduct()"
-    [disabled]="!productAvailability">
-    Add to Cart
-  </button>
+  <button (click)="addProduct()" [disabled]="!productAvailability"> Add to Cart </button>
 
 </div>
+
